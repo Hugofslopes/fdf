@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:30 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/26 14:10:42 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:37:36 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	check_inputs(int ac, char *av)
 		ft_printf("Error opening file: %s\n", strerror(errno));
 		return (0);
 	}
-	char_readed = read(file, &buffer, 10);
+	char_readed = read(file, &buffer, 8);
 	if (char_readed == 0)
 	{
 		perror("Error: Empty file");
@@ -88,8 +88,8 @@ int	main(int ac, char **av)
 	t_map *map;
 
 	map = malloc(sizeof(t_map) * 1);
-	if (!check_inputs(ac, av[1]))
-		exit(1);
+	// if (!check_inputs(ac, av[1]))
+	// 	exit(1);
 	map->map_x = 0;
 	map->map_y = 0;
 	map->node = NULL;

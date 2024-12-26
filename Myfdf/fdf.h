@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:54 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/26 14:03:27 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/26 20:02:10 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ typedef struct map_struct
 
 void	creat_map(char *av, int **array, t_map **map);
 char	**ft_split(char const *s, char c);
+long	ft_atoi_colors(t_map_node **new_node, char *str);
 
 #endif

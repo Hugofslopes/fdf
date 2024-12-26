@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creat_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:00:42 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/26 14:10:43 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/26 22:32:07 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	creat_str(char *av, char ***strgs, int size)
 	
 	fd = open(av, O_RDONLY);
 	i = 0;
-	
 	while (((*strgs)[i] = get_next_line(fd)) != NULL)
 		i++;
 	close(fd);
@@ -95,35 +94,64 @@ void free_strgs2 (char ****strgs2)
 
 void creat_map_list(char ****strgs2, t_map **map)
 {
-	int			i;
-	int			j;
+	int			x;
+	int			y;
 	t_map		*curr;
+	t_map_node	*curr_node;
 	t_map_node	*new_node;
-	t_map_node	*first_node;
 	
-	curr = *map;
-	first_node = curr->node;
-	i = 0;
-	while ((*strgs2)[i])
+	curr_node = (*map)->node;
+	x = 0;
+	while ((*strgs2)[x])
 	{
-		j = 0;
-		while ((*strgs2)[i][j])
+		y = 0;
+		while ((*strgs2)[x][y])
 		{
 			new_node = ft_calloc(sizeof(t_map_node), 1);
 			if (!new_node)
-				return (free_strgs2);
-			new_node = first_node;
-			new_node->x = i;
-			new_node->y = j;
+				{
+				free_strgs2(strgs2);
+				exit (1);
+				}
+			new_node->x = x;
+			new_node->y = y;
 			new_node->next = NULL;
-			new_node->next = ft_atoi_colors(&new_node, (*strgs2)[i][j]);
-			j++;
+			new_node->z = (int)ft_atoi_colors(&new_node, (*strgs2)[x][y]);
+			if ((*map)->node == NULL)
+				(*map)->node = new_node;
+			else
+			{
+				curr_node = (*map)->node;
+				while (curr_node->next != NULL)
+					curr_node = curr_node->next;
+				curr_node->next = new_node;	
+			}
+			ft_printf("X: %5d  ",new_node->x);
+			ft_printf("Y: %5d  ",new_node->y);
+			ft_printf("Z: %5d  ",new_node->z);
+			ft_printf("C: %5d  ",new_node->color);
+			y++;
 		}
-		i++;
+		ft_printf("\n");
+		ft_printf("\n");
+		x++;
 	}
-	free_strgs2(&strgs2);
+	free_strgs2(strgs2);
 }
+void	ft_lstclear2(t_map_node **lst)
+{
+	t_map_node	*tmp;
+	t_map_node	*curr;
 
+	curr = *lst;
+	while (curr != NULL)
+	{
+		tmp = curr;
+		curr = curr->next;
+		free (tmp);
+	}
+	*lst = NULL;
+}
 void	creat_map(char *av, int **array, t_map **map)
 {
 	char	**strgs;
@@ -135,7 +163,10 @@ void	creat_map(char *av, int **array, t_map **map)
 	size = (*map)->map_y;
 	strgs = malloc(sizeof(char *) * size + 1);
 	creat_str(av, & strgs, size);
-	strgs2 = ft_calloc(sizeof(char **), size + 1);
+	strgs2 = malloc(sizeof(char **) * size + 1);
 	creat_strgs(&strgs, &strgs2, size);
 	creat_map_list(&strgs2, map);
+	ft_lstclear2(&(*map)->node);
+	free (map);
+
 }
