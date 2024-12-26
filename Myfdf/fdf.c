@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:30 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/23 16:08:38 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/26 14:10:42 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,15 @@ int	check_inputs(int ac, char *av)
 int	main(int ac, char **av)
 {
 	int	*array;
+	t_map *map;
 
-	// if (!check_inputs(ac, av[1]))
-	// 	exit(1);
-	creat_map(av[1], &array);
+	map = malloc(sizeof(t_map) * 1);
+	if (!check_inputs(ac, av[1]))
+		exit(1);
+	map->map_x = 0;
+	map->map_y = 0;
+	map->node = NULL;
+	creat_map(av[1], &array, &map);
+
+	free(map);
 }

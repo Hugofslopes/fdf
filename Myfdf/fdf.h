@@ -6,30 +6,28 @@
 /*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:54 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/23 16:08:35 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/26 14:03:27 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-typedef struct linked_list
+typedef struct s_map_node
 {
 	int					y;
 	int					x;
+	int					z;
 	int					color;
-	struct link_list	*next;
-}	t_list;
+	struct s_map_node	*next;
+}	t_map_node;
 
 typedef struct map_struct
 {
-	int		map_y;
-	int		map_x;		
-	t_list	node;
-	int		index;
+	int			map_y;
+	int			map_x;		
+	t_map_node	*node;
 }	t_map;
-
-
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -39,6 +37,7 @@ typedef struct map_struct
 # include "ft_printf/ft_printf.h"
 # include "libft/libft.h"
 
-void	creat_map(char *av, int **array);
+void	creat_map(char *av, int **array, t_map **map);
+char	**ft_split(char const *s, char c);
 
 #endif
