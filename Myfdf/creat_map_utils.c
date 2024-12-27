@@ -3,65 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   creat_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:41:09 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/26 22:25:31 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/27 15:52:39 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	get_hexa_color(t_map_node **new_node,char *str)
+void	exit_from_atoi(char ***strgs2, t_map **map, int error)
 {
-	int	result;
-    int	base;
-    int	digit;
-
-	result = 0;
-	base = 16;
-    while (*str)
-	{
-        if (ft_isdigit(*str))
-            digit = *str - '0';
-        else if (*str >= 'a' && *str <= 'f')
-            digit = *str - 'a' + 10;
-        else if (*str >= 'A' && *str <= 'F')
-            digit = *str - 'A' + 10;
-        else 
-            break;
-        if (result > (2147483647 - digit) / base)
-			exit (1);
-        result = result * base + digit;
-        str++;
-    }
-	(*new_node)->z = result;
+	if (error == 1)
+		ft_putstr_fd("Error: Wrong input", 2);
+	else if (error == 2)
+		ft_putstr_fd("Error: Wrong map dimensions", 2);
+	else if (error == 3)
+		ft_putstr_fd("Error: Wrong color input", 2);
+	free_strgs2(strgs2);
+	ft_lstclear2(&(*map)->node);
+	free((*map));
+	exit (1);
 }
 
-long	ft_atoi_colors(t_map_node **new_node, char *str)
+void	get_x(char ***strgs2, t_map **map)
 {
-	int number;
-	int sign;
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (strgs2[x][y])
+		y++;
+	(*map)->map_x = y - 1;
+}
+
+long	ft_atoi_colors(t_map_node **new_node, char *str, char ***strgs2, \
+t_map **map)
+{
+	int	number;
+	int	sign;
 
 	number = 0;
 	sign = 1;
 	if (*str != '-' && *str != '+' && !(*str >= '0' && !*str <= '9'))
-	{
-		exit (1);
-	}
+		exit_from_atoi(strgs2, map, 1);
 	if (*str == '+' || *str == '-')
 		if (*str++ == '-')
 			sign = -1;
-	while (*str != '\0' && *str!= ' ' && *str != ',' && *str)
+	while (*str != '\0' && *str != ' ' && *str != ',' && *str)
 	{
-		number = number * 10 + (*str + '0');
+		number = number * 10 + (*str - '0');
 		str++;
 	}
 	if (*str == ',')
-		get_hexa_color(new_node, str);
+		get_hexa_color(new_node, str, strgs2, map);
 	else if (*str != ' ' && *str != '\0' && *str != '\n')
-		exit (1);
+		exit_from_atoi(strgs2, map, 1);
 	else
-	(*new_node)->color = 0xFF;
+		standard_color(new_node);
 	return (sign * number);
+}
+
+void	creat_map_list2(char ***strgs2, t_map **map, int x, int y)
+{
+	t_map_node	*new_node;
+	t_map_node	*curr_node;
+
+	curr_node = (*map)->node;
+	new_node = ft_calloc(sizeof(t_map_node), 1);
+	if (!new_node)
+	{
+		free_strgs2(strgs2);
+		ft_lstclear2(&(*map)->node);
+		free(map);
+		exit (1);
+	}
+	new_node->x = x;
+	new_node->y = y;
+	new_node->next = NULL;
+	new_node->z = (int)ft_atoi_colors(&new_node, strgs2[x][y], strgs2, map);
+	if ((*map)->node == NULL)
+		(*map)->node = new_node;
+	else
+	{
+		curr_node = (*map)->node;
+		while (curr_node->next != NULL)
+			curr_node = curr_node->next;
+		curr_node->next = new_node;
+	}
 }

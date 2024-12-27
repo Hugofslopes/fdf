@@ -3,155 +3,120 @@
 /*                                                        :::      ::::::::   */
 /*   creat_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:00:42 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/26 22:32:07 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/27 15:33:35 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int get_fd_size(char *av)
+int	get_fd_size(char *av)
 {
-	ssize_t	bytesRead;
+	size_t	bytes_read;
 	int		fd;
 	char	buffer[BUFFER_SIZE];
-    int		line_count;
+	int		line_count;
 	int		i;
 
 	i = 0;
 	line_count = 0;
-    fd = open(av, O_RDONLY);
-    if (fd == -1)
+	fd = open(av, O_RDONLY);
+	bytes_read = 1;
+	while (bytes_read > 0)
 	{
-        perror("Error opening file");
-        exit (1);
-    }
-    while ((bytesRead = read(fd, buffer, sizeof(buffer))) > 0) 
-	{
-		while (i < bytesRead)
+		bytes_read = read(fd, buffer, sizeof(buffer));
+		while (i < bytes_read)
 		{
-            if (buffer[i++] == '\n')
-                line_count++;
-        }
-    }
+			if (buffer[i++] == '\n')
+				line_count++;
+		}
+	}
 	close(fd);
 	return (line_count);
 }
 
-void	creat_str(char *av, char ***strgs, int size)
+char	**creat_str(char *av, int size)
 {
-	int	fd;
-	int i;
-	
+	int				fd;
+	int				i;
+	char			**strgs;
+	static char		*strgs1;
+
+	strgs = malloc(sizeof(char *) * (size + 1));
+	if (!strgs)
+		return (NULL);
 	fd = open(av, O_RDONLY);
 	i = 0;
-	while (((*strgs)[i] = get_next_line(fd)) != NULL)
+	while (i < (size - 1))
+	{
+		strgs[i] = get_next_line(fd, &strgs1);
+		if (!strgs[i])
+		{
+			free_strgs(strgs);
+			free(strgs1);
+			return (NULL);
+		}
 		i++;
+	}
+	strgs[i] = NULL;
+	free(strgs1);
 	close(fd);
+	return (strgs);
 }
 
-void	creat_strgs(char ***strgs, char ****strgs2, int size)
+char	***creat_strgs(char **strgs, int size)
 {
-	int	j;
+	int		j;
+	char	***strgs2;
 
 	j = 0;
-	while (--size >= 0)
+	strgs2 = malloc(sizeof(char **) * (size + 1));
+	if (!strgs2)
 	{
-		(*strgs2)[j] = ft_split((*strgs)[j], ' ');
+		free_strgs(strgs);
+		exit (1);
+	}
+	while (strgs[j])
+	{
+		strgs2[j] = ft_split(strgs[j], ' ');
+		if (!strgs2[j])
+		{
+			free_strgs2(strgs2);
+			free_strgs(strgs);
+			return (NULL);
+		}
 		j++;
 		size--;
 	}
-	j = 0;
-	while ((*strgs)[j])
-	{
-		free((*strgs)[j]);
-		j++;
-	}
-	free((*strgs));
+	strgs2[j] = NULL;
+	free_strgs(strgs);
+	return (strgs2);
 }
 
-void free_strgs2 (char ****strgs2)
-{
-	int			i;
-	int			j;
-	
-	i = 0;
-	while ((*strgs2)[i])
-	{
-		j = 0;
-		while ((*strgs2)[i][j])
-		{
-			free((*strgs2)[i][j]);
-			j++;
-		}
-		free((*strgs2)[i]);
-		i++;
-	}
-	free((*strgs2));
-}
-
-void creat_map_list(char ****strgs2, t_map **map)
+void	creat_map_list(char ***strgs2, t_map **map)
 {
 	int			x;
 	int			y;
 	t_map		*curr;
-	t_map_node	*curr_node;
-	t_map_node	*new_node;
-	
-	curr_node = (*map)->node;
-	x = 0;
-	while ((*strgs2)[x])
+
+	y = 0;
+	while (strgs2[y])
 	{
-		y = 0;
-		while ((*strgs2)[x][y])
+		x = 0;
+		while (strgs2[y][x])
 		{
-			new_node = ft_calloc(sizeof(t_map_node), 1);
-			if (!new_node)
-				{
-				free_strgs2(strgs2);
-				exit (1);
-				}
-			new_node->x = x;
-			new_node->y = y;
-			new_node->next = NULL;
-			new_node->z = (int)ft_atoi_colors(&new_node, (*strgs2)[x][y]);
-			if ((*map)->node == NULL)
-				(*map)->node = new_node;
-			else
-			{
-				curr_node = (*map)->node;
-				while (curr_node->next != NULL)
-					curr_node = curr_node->next;
-				curr_node->next = new_node;	
-			}
-			ft_printf("X: %5d  ",new_node->x);
-			ft_printf("Y: %5d  ",new_node->y);
-			ft_printf("Z: %5d  ",new_node->z);
-			ft_printf("C: %5d  ",new_node->color);
-			y++;
+			creat_map_list2(strgs2, map, y, x);
+			x++;
 		}
-		ft_printf("\n");
-		ft_printf("\n");
-		x++;
+		if ((x - 1) != ((*map)->map_x))
+			exit_from_atoi(strgs2, map, 2);
+		y++;
 	}
 	free_strgs2(strgs2);
 }
-void	ft_lstclear2(t_map_node **lst)
-{
-	t_map_node	*tmp;
-	t_map_node	*curr;
 
-	curr = *lst;
-	while (curr != NULL)
-	{
-		tmp = curr;
-		curr = curr->next;
-		free (tmp);
-	}
-	*lst = NULL;
-}
 void	creat_map(char *av, int **array, t_map **map)
 {
 	char	**strgs;
@@ -161,12 +126,18 @@ void	creat_map(char *av, int **array, t_map **map)
 
 	(*map)->map_y = (get_fd_size(av) * 2);
 	size = (*map)->map_y;
-	strgs = malloc(sizeof(char *) * size + 1);
-	creat_str(av, & strgs, size);
-	strgs2 = malloc(sizeof(char **) * size + 1);
-	creat_strgs(&strgs, &strgs2, size);
-	creat_map_list(&strgs2, map);
-	ft_lstclear2(&(*map)->node);
-	free (map);
-
+	strgs = creat_str(av, size);
+	if (!strgs)
+	{
+		free(map);
+		exit (1);
+	}
+	strgs2 = creat_strgs(strgs, size);
+	if (!strgs2)
+	{
+		free(map);
+		exit (1);
+	}
+	get_x(strgs2, map);
+	creat_map_list(strgs2, map);
 }
