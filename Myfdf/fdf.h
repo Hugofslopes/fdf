@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:54 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/27 15:55:24 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/28 10:41:27 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@
 # include "get_next_line/get_next_line.h"
 # include "ft_printf/ft_printf.h"
 # include "libft/libft.h"
+# include "mlx/mlx.h"
+# include "mlx/mlx_int.h"
 
 typedef struct s_map_node
 {
 	int					y;
 	int					x;
 	int					z;
-	int					RGB_R;
-	int					RGB_G;
-	int					RGB_B;
+	int					rgb_r;
+	int					rgb_g;
+	int					rgb_b;
 	struct s_map_node	*next;
 }	t_map_node;
 
@@ -49,9 +51,11 @@ void	ft_lstclear2(t_map_node **lst);
 void	free_strgs(char **strgs);
 void	free_strgs2(char ***strgs2);
 void	creat_map_list2(char ***strgs2, t_map **map, int x, int y);
-void	exit_from_atoi(char ***strgs2, t_map **map, int error);
+void	exit_from_atoi(char ***strgs2, t_map **map, int error, \
+t_map_node **new_node);
 void	get_x(char ***strgs2, t_map **map);
-void 	standard_color(t_map_node **new_node);
+void	standard_color(t_map_node **new_node);
 void	get_hexa_color(t_map_node **new_node, char *str, char ***strgs2, \
 t_map **map);
+void	mlx_test(char *av);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creat_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:00:42 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/27 15:33:35 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/28 10:06:01 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void	creat_map_list(char ***strgs2, t_map **map)
 {
 	int			x;
 	int			y;
-	t_map		*curr;
 
 	y = 0;
 	while (strgs2[y])
@@ -111,7 +110,7 @@ void	creat_map_list(char ***strgs2, t_map **map)
 			x++;
 		}
 		if ((x - 1) != ((*map)->map_x))
-			exit_from_atoi(strgs2, map, 2);
+			exit_from_atoi(strgs2, map, 2, &(*map)->node);
 		y++;
 	}
 	free_strgs2(strgs2);
