@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:00:42 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/30 15:23:56 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/30 16:45:52 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	***creat_strgs(char **strgs, int size)
 void	creat_map_list(char ***strgs2, t_map **map)
 {
 	int			x;
-	int			y;
+	int			y;	
 
 	y = 0;
 	x = 0;

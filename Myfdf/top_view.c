@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:28:20 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/30 15:24:51 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/30 16:45:46 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,5 @@ void get_zmax(t_map **map)
 
 void top_view(t_map **map)
 {
-	int		color_z;
-	t_map_node	*maps;
-	get_zmax(map);
-	maps = (*map)->node;
-	while(maps)
-	{
-		color_z = (MAX_COLOR * maps->z) / (*map)->z_max;  
-		mlx_pixel_put((*map)->window.mlx, (*map)->window.window, maps->x ,maps->y , color_z);
-		maps= maps->next;
-	}
+
 }
