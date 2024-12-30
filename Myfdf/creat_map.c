@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creat_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:00:42 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/28 10:06:01 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/30 15:23:56 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ int	get_fd_size(char *av)
 	bytes_read = 1;
 	while (bytes_read > 0)
 	{
+		i = 0;
 		bytes_read = read(fd, buffer, sizeof(buffer));
 		while (i < bytes_read)
 		{
-			if (buffer[i++] == '\n')
+			if (buffer[i] == '\n')
 				line_count++;
+			i++;
 		}
 	}
 	close(fd);
@@ -49,7 +51,7 @@ char	**creat_str(char *av, int size)
 		return (NULL);
 	fd = open(av, O_RDONLY);
 	i = 0;
-	while (i < (size - 1))
+	while (i <= (size - 1))
 	{
 		strgs[i] = get_next_line(fd, &strgs1);
 		if (!strgs[i])
@@ -82,13 +84,12 @@ char	***creat_strgs(char **strgs, int size)
 	{
 		strgs2[j] = ft_split(strgs[j], ' ');
 		if (!strgs2[j])
-		{
+		{	
 			free_strgs2(strgs2);
 			free_strgs(strgs);
 			return (NULL);
 		}
 		j++;
-		size--;
 	}
 	strgs2[j] = NULL;
 	free_strgs(strgs);
@@ -101,17 +102,20 @@ void	creat_map_list(char ***strgs2, t_map **map)
 	int			y;
 
 	y = 0;
-	while (strgs2[y])
+	x = 0;
+	while (y <= ((*map)->map_y) - 1)
 	{
-		x = 0;
 		while (strgs2[y][x])
 		{
+			if (strgs2[y][x] == NULL)
+				break ;
 			creat_map_list2(strgs2, map, y, x);
 			x++;
 		}
 		if ((x - 1) != ((*map)->map_x))
 			exit_from_atoi(strgs2, map, 2, &(*map)->node);
 		y++;
+		x = 0;
 	}
 	free_strgs2(strgs2);
 }
@@ -123,7 +127,7 @@ void	creat_map(char *av, int **array, t_map **map)
 	int		fd;
 	int		size;
 
-	(*map)->map_y = (get_fd_size(av) * 2);
+	(*map)->map_y = (get_fd_size(av));
 	size = (*map)->map_y;
 	strgs = creat_str(av, size);
 	if (!strgs)

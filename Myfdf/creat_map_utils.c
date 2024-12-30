@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creat_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:41:09 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/28 10:05:43 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/30 14:41:19 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_map **map)
 	if (*str == '+' || *str == '-')
 		if (*str++ == '-')
 			sign = -1;
-	while (*str != '\0' && *str != ' ' && *str != ',' && *str)
+	while (*str != '\0' && *str != ' ' && *str != ',' && *str && *str != '\n')
 	{
 		number = number * 10 + (*str - '0');
 		str++;
@@ -68,7 +68,7 @@ t_map **map)
 	return (sign * number);
 }
 
-void	creat_map_list2(char ***strgs2, t_map **map, int x, int y)
+void	creat_map_list2(char ***strgs2, t_map **map, int y, int x)
 {
 	t_map_node	*new_node;
 	t_map_node	*curr_node;
@@ -85,7 +85,7 @@ void	creat_map_list2(char ***strgs2, t_map **map, int x, int y)
 	new_node->x = x;
 	new_node->y = y;
 	new_node->next = NULL;
-	new_node->z = (int)ft_atoi_colors(&new_node, strgs2[x][y], strgs2, map);
+	new_node->z = (int)ft_atoi_colors(&new_node, strgs2[y][x], strgs2, map);
 	if (curr_node == NULL)
 		(*map)->node = new_node;
 	else

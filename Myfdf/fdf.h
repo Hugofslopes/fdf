@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:54 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/28 10:41:27 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/30 14:06:00 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ typedef struct s_map_node
 	struct s_map_node	*next;
 }	t_map_node;
 
+typedef struct mlx_struct
+{
+	void	*mlx;
+	void	*window;
+} t_window;
+
 typedef struct map_struct
 {
 	int			map_y;
@@ -42,9 +48,13 @@ typedef struct map_struct
 	int			curr_y;
 	int			dx;
 	int			dy;
-	int			p;	
+	int			p;
+	int			z_max;
 	t_map_node	*node;
+	t_window	window;
 }	t_map;
+
+#define MAX_COLOR 0xFFFFFF
 
 void	creat_map(char *av, int **array, t_map **map);
 void	ft_lstclear2(t_map_node **lst);
@@ -57,5 +67,10 @@ void	get_x(char ***strgs2, t_map **map);
 void	standard_color(t_map_node **new_node);
 void	get_hexa_color(t_map_node **new_node, char *str, char ***strgs2, \
 t_map **map);
-void	mlx_test(char *av);
+void	mlx_test(char *av, t_map **map);
+void top_view(t_map **map);
+void get_zmax(t_map **map);
+
+void print_table(t_map **map);
+
 #endif

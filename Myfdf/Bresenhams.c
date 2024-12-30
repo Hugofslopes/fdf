@@ -6,35 +6,77 @@
 /*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:54:22 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/27 15:12:55 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2024/12/30 16:42:39 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	bresenhams(t_map **map)
+int	ft_abs (int number)
 {
-	int	x;
-	int	y;
-	int	dx;
-	int	dy;
-	int	p;
+	if (number >= 0)
+		return (number);
+	else
+		return(number * - 1);
+}
 
-	x = (*map)->node->x;
-	y = (*map)->node->y;
-	dx = (*map)->node->next->x - (*map)->node->x;
-	dy = (*map)->node->next->y - (*map)->node->y;
-	p = 2 * dy - dx;
-	while (x <= x)
+void slope_bigger_than_one(int dx, int dy, t_point *a, t_point *b)
+{
+	int p;
+	int i;
+
+	i = 0;
+	p = 2 * dx - dy;
+	put_pixel(a->x, a->y);
+	while (i < dy)
 	{
-		put_pixel (x, y);
-		x++;
+		a->y += 1;
 		if (p < 0)
-			p += 2 * dy;
+			p = p + 2 * dx;
 		else
 		{
-			p += (2 * dy) - (2 * dx);
-			y++;
+			a->x += 1;
+			p = p + 2 * dx - 2 * dy;
 		}
+			put_pixel(a->x, a->y);
+		i++;
 	}
+}
+
+void slope_less_then_one(int dx, int dy, t_point *a, t_point *b)
+{
+	int p;
+	int i;
+
+	i = 0;
+	p = 2 * dy - dx;
+	put_pixel(a->x, a->y);
+	while (i < dx)
+	{
+		a->x += 1;
+		if (p < 0)
+			p = p + 2 * dy;
+		else
+		{
+			a->y += 1;
+			p = p + 2 * dy - 2 * dx;
+		}
+		put_pixel(a->x, a->y);
+		i++;
+	}
+}
+
+void	bresenhams(t_map **map)
+{
+	int dx;
+	int dy;
+	t_map_node *maps;
+
+	maps = (*map)->node;
+	dx = maps->next->x - maps->x;
+	dx = maps->next->y - maps->y;
+	if (abs(dx) > abs(dy))
+		slope_less_then_one(dx, dy);
+	else
+		slope_bigger_than_one(dx, dy);
 }
