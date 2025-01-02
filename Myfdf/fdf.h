@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:54 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/30 14:06:00 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/01/02 19:21:51 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include "libft/libft.h"
 # include "mlx/mlx.h"
 # include "mlx/mlx_int.h"
+#include <math.h>
+
 
 typedef struct s_map_node
 {
@@ -38,7 +40,7 @@ typedef struct mlx_struct
 {
 	void	*mlx;
 	void	*window;
-} t_window;
+} t_mlx;
 
 typedef struct map_struct
 {
@@ -51,10 +53,13 @@ typedef struct map_struct
 	int			p;
 	int			z_max;
 	t_map_node	*node;
-	t_window	window;
+	t_mlx		mlx;
 }	t_map;
 
 #define MAX_COLOR 0xFFFFFF
+#define	WIN_WIDTH 1920
+#define WIN_HEIGHT 1080
+
 
 void	creat_map(char *av, int **array, t_map **map);
 void	ft_lstclear2(t_map_node **lst);
@@ -70,7 +75,9 @@ t_map **map);
 void	mlx_test(char *av, t_map **map);
 void top_view(t_map **map);
 void get_zmax(t_map **map);
-
+void draw_map(t_map **map);
+void	init_mlx(t_map **map, char *av);
 void print_table(t_map **map);
+int	key_pressed(int key, void *p);
 
 #endif

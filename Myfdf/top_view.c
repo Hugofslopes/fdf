@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   top_view.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:28:20 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/30 16:45:46 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/01/02 21:17:25 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,4 @@ void get_zmax(t_map **map)
 		maps = maps->next;
 	}
 	(*map)->z_max = max_z;
-}
-
-void top_view(t_map **map)
-{
-
 }
