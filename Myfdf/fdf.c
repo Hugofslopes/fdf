@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:30 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/02 21:17:23 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:58:10 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int	main(int ac, char **av)
 	map->node = NULL;
 	creat_map(av[1], &array, &map);
 	//mlx_test(av[1], &map);
+	//creat_map_array(&map);
 	init_mlx(&map, av[1]);
 	
 	ft_lstclear2(&map->node);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:54 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/02 19:21:51 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:58:10 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,18 @@ typedef struct mlx_struct
 {
 	void	*mlx;
 	void	*window;
+	void	*image;
+	char	*adress;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
 } t_mlx;
 
 typedef struct map_struct
 {
 	int			map_y;
 	int			map_x;
-	int			curr_x;
-	int			curr_y;
-	int			dx;
-	int			dy;
-	int			p;
+	t_map_node	***nodes;
 	int			z_max;
 	t_map_node	*node;
 	t_mlx		mlx;
@@ -78,6 +79,5 @@ void get_zmax(t_map **map);
 void draw_map(t_map **map);
 void	init_mlx(t_map **map, char *av);
 void print_table(t_map **map);
-int	key_pressed(int key, void *p);
-
+void	creat_map_array(t_map **map);
 #endif

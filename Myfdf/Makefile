@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+         #
+#    By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 10:42:35 by hfilipe-          #+#    #+#              #
-#    Updated: 2025/01/02 21:17:22 by hfilipe-         ###   ########.fr        #
+#    Updated: 2025/01/03 14:01:30 by hfilipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 GDB = -ggdb
 FLAGS = -Wall -Werror -Wextra -fPIE
 SRC = fdf.c creat_map.c creat_map_utils.c frees.c get_rgb.c mlx_tests.c top_view.c \
-init.c Bresenhams.c 
+init.c Bresenhams.c creat_map_array.c
 SRC_GET = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c 
 PRINTF_ARC= ft_printf/libftprintf.a
 LIBFT_ARC= libft/libft.a
