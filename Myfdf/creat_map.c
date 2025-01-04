@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creat_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:00:42 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/30 16:45:52 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:13:24 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	***creat_strgs(char **strgs, int size)
 	{
 		strgs2[j] = ft_split(strgs[j], ' ');
 		if (!strgs2[j])
-		{	
+		{
 			free_strgs2(strgs2);
 			free_strgs(strgs);
 			return (NULL);
@@ -112,8 +112,6 @@ void	creat_map_list(char ***strgs2, t_map **map)
 			creat_map_list2(strgs2, map, y, x);
 			x++;
 		}
-		if ((x - 1) != ((*map)->map_x))
-			exit_from_atoi(strgs2, map, 2, &(*map)->node);
 		y++;
 		x = 0;
 	}

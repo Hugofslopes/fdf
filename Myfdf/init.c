@@ -3,44 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:31:23 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/03 15:58:09 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:42:44 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	key_pressed(int key)
+int	mouse_close(t_map **map)
 {
-	// printf("Key pressed: %d\n",key);
-		if (key == 0xFF1B)
-		{
-			//free..
-			exit(0);
-		}
+	clean_and_exit(map);
+	exit(0);
+	return (0);
+}
+
+int	key_pressed(int key, t_map **map)
+{
+	if (key == 0xFF1B)
+	{
+		clean_and_exit(map);
+		exit(0);
+	}
+	return (0);
 }
 
 void	init_mlx(t_map **map, char *av)
 {
-	t_mlx *new_mlx;
-	
-	new_mlx = malloc(sizeof(t_mlx) * 1);
-	
-	(*new_mlx).mlx  = mlx_init();
-	(*new_mlx).window  = mlx_new_window((*new_mlx).mlx ,WIN_WIDTH , WIN_HEIGHT, av);
-	(*new_mlx).image = mlx_new_image((*new_mlx).mlx, WIN_WIDTH, WIN_HEIGHT);
-	(*new_mlx).adress = mlx_get_data_addr((*new_mlx).image, &(*new_mlx).bits_per_pixel, \
-	&(*new_mlx).line_length, &(*new_mlx).endian);
+	t_mlx	new_mlx;
+	int		i;
+	void	*mlx;
+	void	*window;
+	void	*image;
 
-	(*map)->mlx = *new_mlx;
-	(*map)->mlx.mlx = (*new_mlx).mlx;
-	(*map)->mlx.window = (*new_mlx).window;
-	(*map)->mlx.image =(*new_mlx).image;
-	(*map)->mlx.adress = (*new_mlx).adress ; 
-	draw_map(map);
-	mlx_put_image_to_window((*new_mlx).mlx, (*new_mlx).window, (*new_mlx).image, 0, 0);
-	mlx_key_hook((*new_mlx).window , key_pressed, 0);
-	mlx_loop((*new_mlx).mlx);
+	i = 0;
+	mlx = mlx_init();
+	window = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, av);
+	image = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
+	new_mlx.adress = mlx_get_data_addr(image, &new_mlx.bits_per_pixel, \
+	&new_mlx.line_length, &new_mlx.endian);
+	(*map)->mlx = new_mlx;
+	(*map)->mlx.mlx = mlx;
+	(*map)->mlx.window = window;
+	(*map)->mlx.image = image;
+	(*map)->mlx.adress = new_mlx.adress;
+	draw_map(map, i);
+	mlx_put_image_to_window(mlx, window, image, 0, 0);
+	mlx_key_hook(window, key_pressed, map);
+	mlx_hook(window, 17, 0, mouse_close, map);
+	mlx_loop(mlx);
 }

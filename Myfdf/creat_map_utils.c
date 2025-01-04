@@ -3,43 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   creat_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:41:09 by hfilipe-          #+#    #+#             */
-/*   Updated: 2024/12/30 14:41:19 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:24:27 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	exit_from_atoi(char ***strgs2, t_map **map, int error, \
-t_map_node **new_node)
-{
-	if (error == 1)
-		ft_putstr_fd("Error: Wrong input", 2);
-	else if (error == 2)
-		ft_putstr_fd("Error: Wrong map dimensions", 2);
-	else if (error == 3)
-		ft_putstr_fd("Error: Wrong color input", 2);
-	free_strgs2(strgs2);
-	ft_lstclear2(&(*map)->node);
-	free((*map));
-	if (error != 2)
-		free(*new_node);
-	exit (1);
-}
-
-void	get_x(char ***strgs2, t_map **map)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (strgs2[x][y])
-		y++;
-	(*map)->map_x = y - 1;
-}
 
 long	ft_atoi_colors(t_map_node **new_node, char *str, char ***strgs2, \
 t_map **map)
@@ -49,8 +20,9 @@ t_map **map)
 
 	number = 0;
 	sign = 1;
-	if (*str != '-' && *str != '+' && !(*str >= '0' && !*str <= '9'))
-		exit_from_atoi(strgs2, map, 1, new_node);
+	if (*str == ' ')
+		while (*str == ' ')
+			*str++;
 	if (*str == '+' || *str == '-')
 		if (*str++ == '-')
 			sign = -1;

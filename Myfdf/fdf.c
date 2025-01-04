@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:30 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/03 15:58:10 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:52:18 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	check_inputs(int ac, char *av)
 	file = open(av, O_RDONLY);
 	if (file <= 0)
 	{
-		ft_printf("Error opening file: %s\n", strerror(errno));
+		ft_putstr_fd("Error opening file", 2);
 		return (0);
 	}
 	char_readed = read(file, &buffer, 8);
@@ -89,15 +89,13 @@ int	main(int ac, char **av)
 
 	map = malloc(sizeof(t_map) * 1);
 	if (!check_inputs(ac, av[1]))
+	{
+		free(map);
 		exit(1);
+	}
 	map->map_x = 0;
 	map->map_y = 0;
 	map->node = NULL;
 	creat_map(av[1], &array, &map);
-	//mlx_test(av[1], &map);
-	//creat_map_array(&map);
 	init_mlx(&map, av[1]);
-	
-	ft_lstclear2(&map->node);
-	free(map);
 }
