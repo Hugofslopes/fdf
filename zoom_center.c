@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:31:23 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/04 13:41:30 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/01/24 21:46:01 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,11 @@ t_map_node	*find_next_y(t_map_node *curr, t_map **map)
 		new_curr = new_curr->next;
 	}
 	return (new_curr);
+}
+
+int	ft_abs(float a)
+{
+	if (a < 0)
+		return (a * -1);
+	return (a);
 }

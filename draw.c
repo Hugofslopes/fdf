@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:54:22 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/08 17:35:04 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/01/26 10:48:56 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	get_color(int x, int y, t_map_node *a, t_map_node *b)
 	return (color);
 }
 
-float	get_step(float dx, float dy)
+int	get_step(float dx, float dy)
 {
-	float	step;
+	int	step;
 
-	if (dx >= dy)
-		step = dx;
+	if (ft_abs(dx) < ft_abs(dx))
+		step = ft_abs(dx);
 	else
-		step = dy;
+		step = ft_abs(dy);
 	return (step);
 }
 
@@ -58,7 +58,7 @@ void	draw_line(t_map_node *a, t_map_node *b, t_map **map, int i)
 {
 	float	dx;
 	float	dy;	
-	float	step;
+	int		step;
 	float	x;
 	float	y;
 
@@ -100,7 +100,7 @@ void	draw_map(t_map **map, int i)
 				break ;
 			if (y < (*map)->map_y - 1)
 				draw_line(curr, find_next_y(curr, map), map, i);
-			if (x <= get_x_line(y, map))
+			if (x < get_x_line(y, map))
 				draw_line(curr, curr->next, map, i);
 			x++;
 			curr = curr->next;

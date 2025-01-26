@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:54 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/08 16:54:40 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/01/24 21:46:23 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,5 @@ void		exit_from_atoi(char ***strgs2, t_map **map, int error, \
 t_map_node **new_node);
 int			ft_strlenfdf(char *str);
 int			get_x_line(int y, t_map **map);
+int			ft_abs(float a);
 #endif
