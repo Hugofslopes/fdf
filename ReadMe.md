@@ -42,8 +42,8 @@
         </p>
         <li>Call <b>center( )</b> To change the coordinates to position the image in the center of the window.</li>
     </ol>
+    <button onclick="document.getElementById('myDetails').removeAttribute('open');">Close Details</button>
 </details>
-<button onclick="document.getElementById('myDetails').removeAttribute('open');">Close Details</button>
 
 <details>
     <summary>Draw the image</summary>
