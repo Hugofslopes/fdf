@@ -43,9 +43,10 @@
      <li>Call <b>draw_line( )</b> to draw each line of the image.</li>
      <li>First we define the <b>step</n> which will be the increment to each point</b>
      <p>align="center">
-        <img src="https://github.com/user-attachments/assets/21f99c6e-7a0a-42ea-8602-b7fddf0b9a00"/>
+        <img src="https://github.com/user-attachments/assets/e4315607-65cd-4bf7-8bd5-ca31032589"/>
     </p>
 </ol>
+
 
 ## Code Setup
 <p>    
