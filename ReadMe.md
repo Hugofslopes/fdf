@@ -47,7 +47,7 @@
     </p>
     <li>Define the increment for each step in the x and y directions. Dividing by step ensures the points are spaced evenly along the line.</li>
     <p>
-        <img src="https://github.com/user-attachments/assets/17926604-a769-4495-9279-b6002d0b3fb4)"/>
+        <img src="https://github.com/user-attachments/assets/17926604-a769-4495-9279-b6002d0b3fb4"/>
     </p>
 </ol>
 
