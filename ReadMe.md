@@ -31,7 +31,7 @@
     </ol>
 </details>
 
-<details>
+<details id="myDetails">
     <summary>Prepare the image</summary>
     <ol>
         <li>Call <b>draw_map( )</b> to creat the image, puting pixel by pixel on it.</li>
@@ -43,6 +43,7 @@
         <li>Call <b>center( )</b> To change the coordinates to position the image in the center of the window.</li>
     </ol>
 </details>
+<button onclick="document.getElementById('myDetails').removeAttribute('open');">Close Details</button>
 
 <details>
     <summary>Draw the image</summary>
