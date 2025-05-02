@@ -20,14 +20,12 @@
 </ol>
 
 ### Initialize
-<ol>
-    <li><b>init_mlx( )</b> is called to initialize all the necessary components to create an image, open a window and display the image on the window</li>
+<b>init_mlx( )</b> is called to initialize all the necessary components to create an image, open a window and display the image on the window
     <ol>
         <li><b>Call mlx_new_window( )</b> to initialize the new window, which receives as parameters: a pointer to the mlx, the width, the height, and the name of the window</li>
         <li><b>Call mlx_new_image( )</b> to initialize the new image, which receives as parameters: a pointer to the mlx, the width and the height</li>
         <li><b>mlx_get_data_addr( )</b> to initialize the data needed for the image, which receives as parameters: a pointer to the image, the address of bits per pixel, the address of the size of the line, and the address for mlx endianness, which refers to the byte order used in the MiniLibX graphics library..</li>
     </ol>
-</ol>
 
 ### Draw the image
 <ol>
