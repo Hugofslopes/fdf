@@ -41,9 +41,9 @@
 ### Draw the image
 <ol>
      <li>Call <b>draw_line( )</b> to draw each line of the image.</li>
-     <li>First we define the <b>step</n> which will be the increment to each point</b></li>
+     <li>First we define the <b>step</b> which will be the increment to each point</li>
      <p>
-        <img src="https://github.com/user-attachments/assets/147d411b-874d-4ca9-ad42-9a7ea611bd90"/>
+        <img src="https://github.com/user-attachments/assets/4ba48157-3ff7-4ffa-8240-9ec769113464"/>
     </p>
 </ol>
 
