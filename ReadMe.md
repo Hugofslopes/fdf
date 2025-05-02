@@ -8,8 +8,7 @@
 
 ## Summary
 <p>
-    First graphic project in 42
-    Draw an isometric of an map given
+    <b>Fdf</b> is a project from 42 School that aims to teach how to draw an isometric representation of a given map. This program sould read from a .fdf map and creat  one image the representation with colors (if inserted)
 </p>
 
 ## Code Phases
