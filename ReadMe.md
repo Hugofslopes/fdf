@@ -12,9 +12,27 @@
 </p>
 
 ## Code Phases
-<p>    
-    asdsad
-</p>
+### Parsing
+<ol>
+    <li>Check if the number of arguments is correct</li>
+    <li>Check if the second argument is a file, if its extension is .fdf and if it has the permissions to be read.</li>
+    <li><b>create_map( )</b> is called to read each line of the input file and add each point of the map to a node in the linked list. To achieve this, I call <b>get_next_line( )</b>, and then assign each element to the node (x-axis, y-axis, and colors) using <b>atoi( )</b>. The <b>atoi( )</b> function was modified to handle input errors. Additionally, I check for any input errors when retrieving the colors and assign each color to its respective variable in the node.</li>
+</ol>
+
+### Initialize
+<ol>
+    <li><b>init_mlx( )<b> is called to initialize all the necessary components to create an image, open a window and display the image on the window</li>
+    <ol>
+        <li><b>Call mlx_new_window( )<b> to initialize the new window, which receives as parameters: a pointer to the mlx, the width, the height, and the name of the window</li>
+        <li><b>Call mlx_new_image( )<b> to initialize the new image, which receives as parameters: a pointer to the mlx, the width and the height</li>
+        <li><b>mlx_get_data_addr( )<b> to initialize the data needed for the image, which receives as parameters: a pointer to the image, the address of bits per pixel, the address of the size of the line, and the address for mlx endianness, which refers to the byte order used in the MiniLibX graphics library..</li>
+    </ol>
+</ol>
+
+### Draw the image
+<ol>
+    <li>Check if the number of arguments (if there are fewer than two, it means that no numbers were provided).</li>
+</ol>
 
 ## Code Setup
 <p>    
@@ -44,7 +62,7 @@
 <p align="center">
     <img src="https://github.com/user-attachments/assets/b594a1e4-66ea-4450-97a6-2c6ed24fca64"/>
 </p>
-As you can see from the example above, the functions that my program called the most were <b>get_next_line( )</b>, <b>create_map_list2( )</b>, and <b>find_next_y( )</b>. The first two functions are directly related to my parsing process: <b>get_next_line( )</b> retrieves each line of the given map, while <b>create_map_list2( )</b> adds each value to the linked list. The last function, <b>find_next_y( )</b>, is called to determine the maximum y-coordinate for that line, allowing the loop to iterate until it reaches the end of the map. This is necessary because some maps have different numbers of columns.
+As you can see from the example above, the functions that my program called the most were <b>get_next_line( )</b>, <b>create_map_list2( )</b> and <b>find_next_y( )</b>. The first two functions are directly related to my parsing process: <b>get_next_line( )</b> retrieves each line of the given map, while <b>create_map_list2( )</b> adds each value to the linked list. The last function, <b>find_next_y( )</b>, is called to determine the maximum y-coordinate for that line, allowing the loop to iterate until it reaches the end of the map. This is necessary because some maps have different numbers of columns.
 
 ## Improvements
 <p>
