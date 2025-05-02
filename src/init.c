@@ -6,11 +6,11 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:31:23 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/26 10:49:11 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:07:25 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 int	mouse_close(t_map **map)
 {

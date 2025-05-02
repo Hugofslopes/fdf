@@ -6,11 +6,11 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:00:42 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/04 14:13:24 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:05:57 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 int	get_fd_size(char *av)
 {
@@ -18,7 +18,7 @@ int	get_fd_size(char *av)
 	int		fd;
 	char	buffer[BUFFER_SIZE];
 	int		line_count;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	line_count = 0;
@@ -122,9 +122,9 @@ void	creat_map(char *av, int **array, t_map **map)
 {
 	char	**strgs;
 	char	***strgs2;
-	int		fd;
 	int		size;
 
+	(void)array;
 	(*map)->map_y = (get_fd_size(av));
 	size = (*map)->map_y;
 	strgs = creat_str(av, size);

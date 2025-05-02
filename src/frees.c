@@ -6,11 +6,11 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 10:29:29 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/04 14:43:04 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:06:32 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	ft_lstclear2(t_map_node **lst)
 {

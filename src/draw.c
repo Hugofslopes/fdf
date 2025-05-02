@@ -6,11 +6,11 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:54:22 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/26 10:48:56 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:06:04 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	put_pixel(t_map **map, int x, int y, int color)
 {
@@ -86,7 +86,6 @@ void	draw_map(t_map **map, int i)
 	int			x;
 	int			y;
 	t_map_node	*curr;
-	int			**array;
 
 	aply_zoom(map);
 	curr = (*map)->node;

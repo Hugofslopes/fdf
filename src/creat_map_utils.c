@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   creat_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:41:09 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/06 11:44:15 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:05:48 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 long	ft_atoi_colors(t_map_node **new_node, char *str, char ***strgs2, \
 t_map **map)
@@ -20,9 +20,8 @@ t_map **map)
 
 	number = 0;
 	sign = 1;
-	if (*str == ' ')
-		while (*str == ' ')
-			*str++;
+	while (*str && *str == ' ')
+		str++;
 	if (*str == '+' || *str == '-')
 		if (*str++ == '-')
 			sign = -1;

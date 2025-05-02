@@ -6,11 +6,11 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:31:23 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/24 21:46:01 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:08:01 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	center(t_map **map)
 {
@@ -82,6 +82,7 @@ t_map_node	*find_next_y(t_map_node *curr, t_map **map)
 {
 	t_map_node	*new_curr;
 
+	(void)map;
 	new_curr = curr->next;
 	while (new_curr)
 	{

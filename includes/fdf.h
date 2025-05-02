@@ -6,17 +6,17 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:54 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/24 21:46:23 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:08:23 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "get_next_line/get_next_line.h"
-# include "libft/libft.h"
-# include "mlx/mlx.h"
-# include "mlx/mlx_int.h"
+# include "../get_next_line/get_next_line.h"
+# include "../libft/libft.h"
+# include "../mlx/mlx.h"
+# include "../mlx/mlx_int.h"
 # include <math.h>
 
 typedef struct s_map_node

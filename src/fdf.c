@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfilipe- <hfilipe-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 09:43:30 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/01/08 16:31:27 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:06:15 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 int	check_av(char *av)
 {
@@ -57,7 +57,6 @@ int	check_ac(int ac)
 
 int	check_inputs(int ac, char *av)
 {
-	char	*test;
 	int		file;
 	int		char_readed;
 	char	*buffer;
