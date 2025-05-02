@@ -76,7 +76,7 @@
         <li>Call <b>mlx_key_hook( )</b> to close the window, it receives the following parameters: a pointer to the window, a function that checks if the "Esc" key was pressed and a pointer to the structure that contains all the allocated memory to be freed.</li>
         <li>Call <b>mlx_put_image_to_window( )</b> to close the window, it receives the following parameters: a pointer to the window; 17, which is the event code for the "Destroy Notify" event in MLX and X11; 0 which is the event mask (in this case, 0 because this event doesn't require an additional mask); a function that will call the function to free all the memory; and a pointer to the structure that contains all the allocated memory to be freed.</li>
     </ol>
-<details>
+</details>
 
 ## Code Setup
 <p>    
