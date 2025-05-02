@@ -56,6 +56,17 @@
         <p>
             <img src="https://github.com/user-attachments/assets/17926604-a769-4495-9279-b6002d0b3fb4"/>
         </p>
+        <li>Call <b>put_pixel( )</b> to add each pixel to the image.</li>
+        <p>
+            <img src="https://github.com/user-attachments/assets/70b30c52-d9a8-4ceb-a342-9b53ee8affbf"/>
+        </p>
+        <ol>
+            <li>(*map)->mlx.adress: This is a pointer to the beginning of the image data (pixel buffer).</li>
+            <li>y * (*map)->mlx.line_length: Calculates the offset in bytes to the start of the row y in the image.</li>
+        <li>line_length is the number of bytes in a single row (also called scanline).</li>
+        <li>x * ((*map)->mlx.bits_per_pixel / 8): Calculates the offset in bytes to the pixel x in the current row.</li>
+        <li>bits_per_pixel is the number of bits used to represent a single pixel. Dividing by 8 converts this to bytes per pixel.</li>
+        </ol>
     </ol>
 </details>
 
