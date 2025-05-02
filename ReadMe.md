@@ -27,16 +27,26 @@
         <li><b>mlx_get_data_addr( )</b> to initialize the data needed for the image, which receives as parameters: a pointer to the image, the address of bits per pixel, the address of the size of the line, and the address for mlx endianness, which refers to the byte order used in the MiniLibX graphics library..</li>
     </ol>
 
-### Draw the image
+### Prepare the image
 <ol>
     <li>Call <b>draw_map( )</b> to creat the image, puting pixel by pixel on it.</li>
     <li>Call <b>apply_zoom( )</b> to adjust the image to fit the size of the window.</li>
     <li>Call <b>isometric( )</b> to create the x and y points based on the x, y, and z values provided by the input. Multiplying by cos(30°) and sin(30°) scales these combined coordinates to the correct horizontal and vertical components of the projection. Subtracting the original z from the projected y adds depth, pushing points "up" or "down" based on their z value, which creates the illusion of height.</li>
-    <p align="center">
+    <p>align="center">
         <img src="https://github.com/user-attachments/assets/21f99c6e-7a0a-42ea-8602-b7fddf0b9a00"/>
     </p>
-    <li></li>
+    <li>Call <b>center( )</b> To change the coordinates to position the image in the center of the window.</li>
 </ol>
+
+### Draw the image
+<ol>
+     <li>Call <b>draw_line( )</b> to draw each line of the image.</li>
+     <li>First we define the <b>step</n> which will be the increment to each point</b>
+     <p>align="center">
+        <img src="https://github.com/user-attachments/assets/21f99c6e-7a0a-42ea-8602-b7fddf0b9a00"/>
+    </p>
+</ol>
+
 ## Code Setup
 <p>    
     <b>Step 1:</b> Clone the repository
