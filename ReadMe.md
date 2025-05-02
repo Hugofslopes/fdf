@@ -61,11 +61,10 @@
             <img src="https://github.com/user-attachments/assets/70b30c52-d9a8-4ceb-a342-9b53ee8affbf"/>
         </p>
         <ol>
-            <li>(*map)->mlx.adress: This is a pointer to the beginning of the image data (pixel buffer).</li>
-            <li>y * (*map)->mlx.line_length: Calculates the offset in bytes to the start of the row y in the image.</li>
-            <li>line_length is the number of bytes in a single row (also called scanline).</li>
-            <li>x * ((*map)->mlx.bits_per_pixel / 8): Calculates the offset in bytes to the pixel x in the current row.</li>
-            <li>bits_per_pixel is the number of bits used to represent a single pixel. Dividing by 8 converts this to bytes per pixel.</li>
+            <li><b>(*map)->mlx.adress:</b> This is a pointer to the beginning of the image data (pixel buffer).</li>
+            <li><b>y * (*map)->mlx.line_length:</b> Calculates the offset in bytes to the start of the row y in the image. Line_length is the number of bytes in a single row (also called scanline).</li>
+            <li><b>x * ((*map)->mlx.bits_per_pixel / 8):</b> Calculates the offset in bytes to the pixel x in the current row. Bits_per_pixel is the number of bits used to represent a single pixel. Dividing by 8 converts this to bytes per pixel.</li>
+            <li><b>*(unsigned int *)pxl = color</b> Assigns the value of color to the pixel at the calculated address.</li>
         </ol>
     </ol>
 </details>
