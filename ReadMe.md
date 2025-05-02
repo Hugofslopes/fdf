@@ -63,9 +63,9 @@
         <ol>
             <li>(*map)->mlx.adress: This is a pointer to the beginning of the image data (pixel buffer).</li>
             <li>y * (*map)->mlx.line_length: Calculates the offset in bytes to the start of the row y in the image.</li>
-        <li>line_length is the number of bytes in a single row (also called scanline).</li>
-        <li>x * ((*map)->mlx.bits_per_pixel / 8): Calculates the offset in bytes to the pixel x in the current row.</li>
-        <li>bits_per_pixel is the number of bits used to represent a single pixel. Dividing by 8 converts this to bytes per pixel.</li>
+            <li>line_length is the number of bytes in a single row (also called scanline).</li>
+            <li>x * ((*map)->mlx.bits_per_pixel / 8): Calculates the offset in bytes to the pixel x in the current row.</li>
+            <li>bits_per_pixel is the number of bits used to represent a single pixel. Dividing by 8 converts this to bytes per pixel.</li>
         </ol>
     </ol>
 </details>
