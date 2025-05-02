@@ -44,7 +44,7 @@
 <p align="center">
     <img src="https://github.com/user-attachments/assets/b594a1e4-66ea-4450-97a6-2c6ed24fca64"/>
 </p>
-    As you can see on the example above 
+As you can see from the example above, the functions that my program called the most were <b>get_next_line( )</b>, <b>create_map_list2( )</b>, and <b>find_next_y( )</b>. The first two functions are directly related to my parsing process: <b>get_next_line( )</b> retrieves each line of the given map, while <b>create_map_list2( )</b> adds each value to the linked list. The last function, <b>find_next_y( )</b>, is called to determine the maximum y-coordinate for that line, allowing the loop to iterate until it reaches the end of the map. This is necessary because some maps have different numbers of columns.
 
 ## Improvements
 <p>
