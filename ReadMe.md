@@ -1,66 +1,46 @@
-<html>
 <p align="center">
-    <img src="https://www.42porto.com/wp-content/uploads/2024/08/42-Porto-Horizontal.png" alt="Pipex Image" />
+    <img src="https://www.42porto.com/wp-content/uploads/2024/08/42-Porto-Horizontal.png"/>
 </p>
 <h1 align="center">Fdf</h1>
-</html>
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/ec1ee496-4893-451f-a6b2-a4d12408e8ef"/>
+</p>
 
 ## Summary
-<html>
-    <p>
-   First graphic project in 42
-Draw an isometric of an map given
-    </p>
-</html>
+<p>
+    First graphic project in 42
+    Draw an isometric of an map given
+</p>
 
 ## Code Phases
-
-<html>
-    <p>    
+<p>    
     asdsad
-    </p>
-</html>
+</p>
 
 ## Code Setup
-
-<html>
-    <p>    
+<p>    
     <b>Step 1:</b> Clone the repository
-    </p>
-</html>
- 
+</p>
+
     git clone https://github.com/Hugofslopes/fdf.git    
 
-<html>
-    <p>
+<p>
     <b>Step 2:</b> Open the terminal on the repo folder and write
-    </p>
-</html>
+</p>
 
     make
 
-<html>
-    <p>
+<p>
     <b>Step 3:</b> Execute
-    </p>
-</html>
+ </p>
 
     ./fdf <map_name>
 
-<html>
-    <p>
+<p>
     <b>Step 4:</b> Close the windown and open new test.  
-    </p>
-</html>
-s
+</p>
+
 ## Improvements
-    
-<html>
-    <p>
-   The parsing could be improved if i use one bi-dimensional array instead of an linked list.
-This will make the program execute big maps in a fastest way.
-There is one other improvement that can me made, that is reading the map for the last 'y' to the first and storing it in this way,
-to change the view from the object. 
-No bonus made, for now . Its a possible improvement for the future.
-    </p>
-</html>
+<p>
+    The parsing could be improved if i use one bi-dimensional array instead of an linked list. This will make the program execute big maps in a fastest way. There is one other improvement that can me made, that is reading the map for the last 'y' to the first and storing it in this way, to change the view from the object. No bonus made, for now . Its a possible improvement for the future.
+</p>
