@@ -36,13 +36,16 @@
     ./fdf <map_name>
 
 <p>
-    <b>Step 4:</b> Close the windown and open new test.
-    To creat a log file taht will check num,ber of calls for each funtion and the time that it took you shoud add the <b>-pg</b>, on my case i just aded that before gdb flag. Executing the program with this flag will genereat a gmon.out file. Then to generate the log file you just nee to run the folowing command:
+    <b>Step 4:</b> Tests<br> 
+    To create a log file that will track the number of calls for each function and the time it took, you should add the `-pg` flag. In my case, I just added that flag before the `gdb` flag. Executing the program with this flag will generate a `gmon.out` file. Then, to generate the log file, you just need to run the following command:
 </p>
     
     gprof <executable_name> gmon.out > log_file
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/b594a1e4-66ea-4450-97a6-2c6ed24fca64"/>
+</p>
+    As you can see on the example above 
 
-this will generate the log file and will creat the log_file with the content from the log
 ## Improvements
 <p>
     The parsing could be improved if i use one bi-dimensional array instead of an linked list. This will make the program execute big maps in a fastest way. There is one other improvement that can me made, that is reading the map for the last 'y' to the first and storing it in this way, to change the view from the object. No bonus made, for now . Its a possible improvement for the future.
