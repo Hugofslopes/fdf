@@ -12,46 +12,52 @@
 </p>
 
 ## Code Phases
-### Parsing
-<ol>
-    <li>Check if the number of arguments is correct</li>
-    <li>Check if the second argument is a file, if its extension is .fdf and if it has the permissions to be read.</li>
-    <li><b>create_map( )</b> is called to read each line of the input file and add each point of the map to a node in the linked list. To achieve this, I call <b>get_next_line( )</b>, and then assign each element to the node (x-axis, y-axis, and colors) using <b>atoi( )</b>. The <b>atoi( )</b> function was modified to handle input errors. Additionally, I check for any input errors when retrieving the colors and assign each color to its respective variable in the node.</li>
-</ol>
+<details>
+    <summary>Parsing</summary>
+    <ol>
+        <li>Check if the number of arguments is correct</li>
+        <li>Check if the second argument is a file, if its extension is .fdf and if it has the permissions to be read.</li>
+        <li><b>create_map( )</b> is called to read each line of the input file and add each point of the map to a node in the linked list. To achieve this, I call <b>get_next_line( )</b>, and then assign each element to the node (x-axis, y-axis, and colors) using <b>atoi( )</b>. The <b>atoi( )</b> function was modified to handle input errors. Additionally, I check for any input errors when retrieving the colors and assign each color to its respective variable in the node.</li>
+    </ol>
+</details>
 
-### Initialize
+<details>
+    <summary>Initialize</summary>
 <b>init_mlx( )</b> is called to initialize all the necessary components to create an image, open a window and display the image on the window
     <ol>
         <li><b>Call mlx_new_window( )</b> to initialize the new window, which receives as parameters: a pointer to the mlx, the width, the height, and the name of the window</li>
         <li><b>Call mlx_new_image( )</b> to initialize the new image, which receives as parameters: a pointer to the mlx, the width and the height</li>
         <li><b>mlx_get_data_addr( )</b> to initialize the data needed for the image, which receives as parameters: a pointer to the image, the address of bits per pixel, the address of the size of the line, and the address for mlx endianness, which refers to the byte order used in the MiniLibX graphics library..</li>
     </ol>
+</details>
 
-### Prepare the image
-<ol>
-    <li>Call <b>draw_map( )</b> to creat the image, puting pixel by pixel on it.</li>
-    <li>Call <b>apply_zoom( )</b> to adjust the image to fit the size of the window.</li>
-    <li>Call <b>isometric( )</b> to create the x and y points based on the x, y, and z values provided by the input. Multiplying by cos(30°) and sin(30°) scales these combined coordinates to the correct horizontal and vertical components of the projection. Subtracting the original z from the projected y adds depth, pushing points "up" or "down" based on their z value, which creates the illusion of height.</li>
-    <p>
-        <img src="https://github.com/user-attachments/assets/21f99c6e-7a0a-42ea-8602-b7fddf0b9a00"/>
-    </p>
-<li>Call <b>center( )</b> To change the coordinates to position the image in the center of the window.</li>
-</ol>
+<details>
+    <summary>Prepare the image</summary>
+    <ol>
+        <li>Call <b>draw_map( )</b> to creat the image, puting pixel by pixel on it.</li>
+        <li>Call <b>apply_zoom( )</b> to adjust the image to fit the size of the window.</li>
+        <li>Call <b>isometric( )</b> to create the x and y points based on the x, y, and z values provided by the input. Multiplying by cos(30°) and sin(30°) scales these combined coordinates to the correct horizontal and vertical components of the projection. Subtracting the original z from the projected y adds depth, pushing points "up" or "down" based on their z value, which creates the illusion of height.</li>
+        <p>
+            <img src="https://github.com/user-attachments/assets/21f99c6e-7a0a-42ea-8602-b7fddf0b9a00"/>
+        </p>
+        <li>Call <b>center( )</b> To change the coordinates to position the image in the center of the window.</li>
+    </ol>
+</details>
 
-### Draw the image
-<ol>
-     <li>Call <b>draw_line( )</b> to draw each line of the image.</li>
-     <li>First we define the <b>step</b> which will be the increment to each point</li>
-     <p>
-        <img src="https://github.com/user-attachments/assets/d8b031fd-d454-4933-b00c-1b8bdedf74ab"/>
-    </p>
-    <li>Define the increment for each step in the x and y directions. Dividing by step ensures the points are spaced evenly along the line.</li>
-    <p>
-        <img src="https://github.com/user-attachments/assets/17926604-a769-4495-9279-b6002d0b3fb4"/>
-    </p>
-</ol>
-
-
+<details>
+    <summary>Draw the image</summary>
+    <ol>
+        <li>Call <b>draw_line( )</b> to draw each line of the image.</li>
+        <li>First we define the <b>step</b> which will be the increment to each point</li>
+        <p>
+            <img src="https://github.com/user-attachments/assets/d8b031fd-d454-4933-b00c-1b8bdedf74ab"/>
+        </p>
+        <li>Define the increment for each step in the x and y directions. Dividing by step ensures the points are spaced evenly along the line.</li>
+        <p>
+            <img src="https://github.com/user-attachments/assets/17926604-a769-4495-9279-b6002d0b3fb4"/>
+        </p>
+    </ol>
+</details>
 
 ## Code Setup
 <p>    
